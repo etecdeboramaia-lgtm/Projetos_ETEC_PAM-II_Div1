@@ -20,6 +20,7 @@ type
     Layout5: TLayout;
     btngravar: TButton;
     procedure btngravarClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -44,8 +45,15 @@ begin
   begin
       Close;
       SQL.Clear;
-
-      SQL.Add('insert into usuarios(usunome,usulogin,ususenha)values(:usunome,:usulogin,:ususenha);');
+      if (id = 0) then
+       begin
+         SQL.Add('insert into usuarios(usunome,usulogin,ususenha)values(:usunome,:usulogin,:ususenha);');
+       end
+       else
+       begin
+         SQL.Add('update usuarios set usunome=:usonome,usulogin=:usulogin,ususenha=:ususenha where usuid=:usuid');
+         ParamByName('usuid').Value := id;
+       end;
 
       ParamByName('usunome').Value:=edtusunome.Text;
       ParamByName('usulogin').Value:=edtusulogin.text;
@@ -53,6 +61,22 @@ begin
 
       ExecSQL;
   end;
+end;
+
+procedure Tfrmiuusuario.FormShow(Sender: TObject);
+begin
+id:=1;
+with dm.usuario do
+begin
+  Close;
+  SQL.Clear;
+  SQL.Add('select * from usuarios where usuid = :id;');
+  ParamByName('id').Value := id;
+  Open;
+end;
+  edtusunome.Text:=dm.usuariousunome.AsString;
+  edtusulogin.Text:=dm.usuariousulogin.AsString;
+  edtususenha.Text:=dm.usuarioususenha.AsString;
 end;
 
 end.
