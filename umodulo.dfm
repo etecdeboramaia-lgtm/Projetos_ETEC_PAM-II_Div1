@@ -3,7 +3,7 @@ object dm: Tdm
   Width = 960
   object conexao: TFDConnection
     Params.Strings = (
-      'Database=C:\Projetos_ETEC_PAM-II_Div1\bdlanchonete.db'
+      'Database=C:\ETEC\Projetos_ETEC_PAM-II_Div1\bdlanchonete.db'
       'DriverID=SQLite')
     LoginPrompt = False
     Left = 75

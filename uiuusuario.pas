@@ -65,7 +65,8 @@ end;
 
 procedure Tfrmiuusuario.FormShow(Sender: TObject);
 begin
-id:=1;
+if (id <> 0) then
+ begin
 with dm.usuario do
 begin
   Close;
@@ -77,6 +78,7 @@ end;
   edtusunome.Text:=dm.usuariousunome.AsString;
   edtusulogin.Text:=dm.usuariousulogin.AsString;
   edtususenha.Text:=dm.usuarioususenha.AsString;
+end;
 end;
 
 end.

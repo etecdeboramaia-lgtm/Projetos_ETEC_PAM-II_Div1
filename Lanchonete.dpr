@@ -12,9 +12,9 @@ uses
 
 begin
   Application.Initialize;
+  Application.CreateForm(Tfrmlistausuario, frmlistausuario);
   Application.CreateForm(Tfrmiuusuario, frmiuusuario);
   Application.CreateForm(Tfrmacesso, frmacesso);
   Application.CreateForm(Tdm, dm);
-  Application.CreateForm(Tfrmlistausuario, frmlistausuario);
   Application.Run;
 end.
