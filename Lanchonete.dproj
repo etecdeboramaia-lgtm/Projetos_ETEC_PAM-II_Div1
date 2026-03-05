@@ -228,7 +228,7 @@
             <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="ulistausuarios.pas">
-            <Form>Form1</Form>
+            <Form>frmlistausuarios</Form>
             <FormType>fmx</FormType>
         </DCCReference>
         <BuildConfiguration Include="Base">
