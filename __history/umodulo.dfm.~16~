@@ -40,51 +40,23 @@ object dm: Tdm
     UpdateOptions.AutoCommitUpdates = True
     Left = 448
     Top = 440
-    object usuariosid: TIntegerField
-      FieldName = 'id'
+    object usuariosusuid: TIntegerField
+      FieldName = 'usuid'
     end
-    object usuariosnome: TStringField
-      FieldName = 'nome'
+    object usuariosusunome: TStringField
+      FieldName = 'usunome'
       Size = 150
     end
-    object usuariosusuario: TStringField
-      FieldName = 'usuario'
+    object usuariosusulogin: TStringField
+      FieldName = 'usulogin'
       Size = 150
     end
-    object usuarioslogado: TBooleanField
-      FieldName = 'logado'
-    end
-  end
-  object RRDSAlogin: TRESTResponseDataSetAdapter
-    Dataset = login
-    FieldDefs = <>
-    ResponseJSON = RESTResponse1
-    Left = 616
-    Top = 336
-  end
-  object login: TFDMemTable
-    FetchOptions.AssignedValues = [evMode]
-    FetchOptions.Mode = fmAll
-    ResourceOptions.AssignedValues = [rvSilentMode]
-    ResourceOptions.SilentMode = True
-    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
-    UpdateOptions.CheckRequired = False
-    UpdateOptions.AutoCommitUpdates = True
-    Left = 616
-    Top = 439
-    object loginid: TIntegerField
-      FieldName = 'id'
-    end
-    object loginnome: TStringField
-      FieldName = 'nome'
+    object usuariosususenha: TStringField
+      FieldName = 'ususenha'
       Size = 150
     end
-    object loginusuario: TStringField
-      FieldName = 'usuario'
-      Size = 150
-    end
-    object loginlogado: TBooleanField
-      FieldName = 'logado'
+    object usuariosusulogado: TBooleanField
+      FieldName = 'usulogado'
     end
   end
 end

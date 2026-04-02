@@ -14,7 +14,7 @@ Coordinates=10,188,53,33
 Coordinates=30,80,53,51
 
 [ListView1]
-Coordinates=350,70,89,159
+Coordinates=600,80,89,159
 Visible=True
 
 [Layout4]
@@ -39,7 +39,7 @@ Coordinates=154,287,106,87
 Coordinates=60,250,94,69
 
 [dm.RESTResponse1]
-Coordinates=740,130,115,303
+Coordinates=1140,130,115,303
 
 [Module Settings]
 ModelLayerNames=
@@ -47,8 +47,11 @@ ActiveLayerNames=
 EditingLayerName=
 
 [BindSourceDB1]
-Coordinates=480,70,92,159
+Coordinates=780,70,92,141
 
 [BindingsList1]
 Coordinates=0,0,82,33
+
+[dm.login]
+Coordinates=317,279,57,123
 

@@ -19,7 +19,6 @@ type
     edtusuario: TEdit;
     edtsenha: TEdit;
     btnacessar: TButton;
-    procedure btnacessarClick(Sender: TObject);
   private
     { Private declarations }
     jsnobj: TJSONObject; // jsonencode - PHP
@@ -39,11 +38,6 @@ uses umodulo;
 
 { Tfrmacesso }
 
-procedure Tfrmacesso.btnacessarClick(Sender: TObject);
-begin
-  geraJSON;
-end;
-
 procedure Tfrmacesso.geraJSON;
 begin
   try
@@ -52,11 +46,10 @@ begin
     jsnobj.AddPair('senha', edtsenha.Text);
     { chamada da API }
     dm.RESTRequest1.Resource := '/login.php?jsn={parametro}';
-    { jsnobj.ToString -> pega os dados e transforma em
-      {"usuario":"valor","senha":"valor" }// }
-    ShowMessage(jsnobj.ToString);
-    // dm.RESTRequest1.Params.AddUrlSegment('parametro', jsnobj.ToString);
-    // dm.RESTRequest1.Execute;
+    { jsnobj.ToString -> pega os dados e transforma em {"usuario":"valor","senha":"valor" }
+    // }
+    dm.RESTRequest1.Params.AddUrlSegment('parametro', jsnobj.ToString);
+    dm.RESTRequest1.Execute;
   finally
     jsnobj.DisposeOf;
   end;

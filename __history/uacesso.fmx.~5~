@@ -96,7 +96,6 @@ object frmacesso: Tfrmacesso
         TabOrder = 0
         Text = 'ACESSAR'
         TextSettings.Trimming = None
-        OnClick = btnacessarClick
       end
     end
   end
