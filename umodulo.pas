@@ -19,11 +19,16 @@ type
     RESTResponse1: TRESTResponse;
     RRDSAusuarios: TRESTResponseDataSetAdapter;
     usuarios: TFDMemTable;
-    usuariosusuid: TIntegerField;
-    usuariosusunome: TStringField;
-    usuariosusulogin: TStringField;
-    usuariosususenha: TStringField;
-    usuariosusulogado: TBooleanField;
+    RRDSAlogin: TRESTResponseDataSetAdapter;
+    login: TFDMemTable;
+    loginid: TIntegerField;
+    loginnome: TStringField;
+    loginusuario: TStringField;
+    loginlogado: TBooleanField;
+    usuariosid: TIntegerField;
+    usuariosnome: TStringField;
+    usuariosusuario: TStringField;
+    usuarioslogado: TBooleanField;
   private
     { Private declarations }
   public

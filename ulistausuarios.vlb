@@ -47,8 +47,11 @@ ActiveLayerNames=
 EditingLayerName=
 
 [BindSourceDB1]
-Coordinates=480,70,92,159
+Coordinates=530,60,92,141
 
 [BindingsList1]
 Coordinates=0,0,82,33
+
+[dm.login]
+Coordinates=317,279,57,123
 

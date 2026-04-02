@@ -1,34 +1,33 @@
 object dm: Tdm
-  Height = 1260
-  Width = 1680
-  PixelsPerInch = 168
+  Height = 720
+  Width = 960
   object RESTClient1: TRESTClient
     Accept = 'application/json, text/plain; q=0.9, text/html;q=0.8,'
     AcceptCharset = 'utf-8, *;q=0.8'
     BaseURL = 'http://127.0.0.1/Projetos_ETEC_PWEB-III_Div1/api'
     Params = <>
     SynchronizedEvents = False
-    Left = 448
-    Top = 16
+    Left = 256
+    Top = 9
   end
   object RESTRequest1: TRESTRequest
     Client = RESTClient1
     Params = <>
     Response = RESTResponse1
     SynchronizedEvents = False
-    Left = 448
-    Top = 120
+    Left = 256
+    Top = 69
   end
   object RESTResponse1: TRESTResponse
-    Left = 448
-    Top = 224
+    Left = 256
+    Top = 128
   end
   object RRDSAusuarios: TRESTResponseDataSetAdapter
     Dataset = usuarios
     FieldDefs = <>
     ResponseJSON = RESTResponse1
-    Left = 448
-    Top = 336
+    Left = 256
+    Top = 192
   end
   object usuarios: TFDMemTable
     FetchOptions.AssignedValues = [evMode]
@@ -38,25 +37,52 @@ object dm: Tdm
     UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
     UpdateOptions.CheckRequired = False
     UpdateOptions.AutoCommitUpdates = True
-    Left = 448
-    Top = 440
-    object usuariosusuid: TIntegerField
-      FieldName = 'usuid'
+    Left = 256
+    Top = 251
+    object usuariosid: TIntegerField
+      FieldName = 'id'
     end
-    object usuariosusunome: TStringField
-      FieldName = 'usunome'
-      Size = 150
+    object usuariosnome: TStringField
+      FieldName = 'nome'
+      Size = 100
     end
-    object usuariosusulogin: TStringField
-      FieldName = 'usulogin'
-      Size = 150
+    object usuariosusuario: TStringField
+      FieldName = 'usuario'
+      Size = 100
     end
-    object usuariosususenha: TStringField
-      FieldName = 'ususenha'
-      Size = 150
+    object usuarioslogado: TBooleanField
+      FieldName = 'logado'
     end
-    object usuariosusulogado: TBooleanField
-      FieldName = 'usulogado'
+  end
+  object RRDSAlogin: TRESTResponseDataSetAdapter
+    Dataset = usuarios
+    FieldDefs = <>
+    Left = 408
+    Top = 192
+  end
+  object login: TFDMemTable
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    Left = 408
+    Top = 256
+    object loginid: TIntegerField
+      FieldName = 'id'
+    end
+    object loginnome: TStringField
+      FieldName = 'nome'
+      Size = 100
+    end
+    object loginusuario: TStringField
+      FieldName = 'usuario'
+      Size = 100
+    end
+    object loginlogado: TBooleanField
+      FieldName = 'logado'
     end
   end
 end

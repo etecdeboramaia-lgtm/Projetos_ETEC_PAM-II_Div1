@@ -19,6 +19,7 @@ type
     edtusuario: TEdit;
     edtsenha: TEdit;
     btnacessar: TButton;
+    procedure btnacessarClick(Sender: TObject);
   private
     { Private declarations }
     jsnobj: TJSONObject; // jsonencode - PHP
@@ -38,15 +39,23 @@ uses umodulo;
 
 { Tfrmacesso }
 
+procedure Tfrmacesso.btnacessarClick(Sender: TObject);
+begin
+  geraJSON;
+end;
+
 procedure Tfrmacesso.geraJSON;
 begin
   try
     jsnobj := TJSONObject.Create;
     jsnobj.AddPair('usuario', edtusuario.Text);
     jsnobj.AddPair('senha', edtsenha.Text);
-    //{"usuario":"valor","senha":"valor"}
+    dm.RESTRequest1.Resource := '/login.php?jsn={parametro}';
+    showmessage(jsnobj.ToString);
+   // dm.RESTRequest1.Params.AddUrlSegment('parametro', jsnobj.ToString);
+    //dm.RESTRequest1.Execute;
   finally
-
+    jsnobj.DisposeOf;
   end;
 end;
 
