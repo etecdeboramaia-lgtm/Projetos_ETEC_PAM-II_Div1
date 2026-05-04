@@ -9,7 +9,7 @@ uses
   FMX.ListView.Types, FMX.ListView.Appearances, FMX.ListView.Adapters.Base,
   FMX.Controls.Presentation, FMX.StdCtrls, FMX.ListView, FMX.Layouts,
   System.Rtti, System.Bindings.Outputs, FMX.Bind.Editors, Data.Bind.EngExt,
-  FMX.Bind.DBEngExt, Data.Bind.Components, Data.Bind.DBScope;
+  FMX.Bind.DBEngExt, Data.Bind.Components, Data.Bind.DBScope, System.JSON;
 
 type
   Tfrmlistausuarios = class(TForm)
@@ -29,6 +29,7 @@ type
     { Private declarations }
   public
     { Public declarations }
+    jsnobj: TJSONObject; // jsonencode - PHP
     // ctrl+shift+c
     procedure carregaDados();
   end;
@@ -50,12 +51,19 @@ end;
 
 procedure Tfrmlistausuarios.carregaDados;
 begin
-  // conexao com o servidor da API
-  // dm.RESTClient1.BaseURL := 'http://localhost/Projetos_ETEC_PWEB-III_Div1';
-  // direcionar para a API especifica
-  dm.RESTRequest1.Resource := '/susuarios.php';
-  // conectar a API especifica para retornar os dados
-  dm.RESTRequest1.Execute;
+  try
+    jsnobj := TJSONObject.Create;
+    jsnobj.AddPair('op', 'l');
+    jsnobj.AddPair('nome', '');
+    // conexao com o servidor da API
+    // dm.RESTClient1.BaseURL := 'http://localhost/Projetos_ETEC_PWEB-III_Div1';
+    // direcionar para a API especifica
+    dm.RESTRequest1.Resource := '/usuarios/?jsn={parametro}';
+    // conectar a API especifica para retornar os dados
+    dm.RESTRequest1.Execute;
+  finally
+    jsnobj.DisposeOf;
+  end;
 end;
 
 procedure Tfrmlistausuarios.FormShow(Sender: TObject);

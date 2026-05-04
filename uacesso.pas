@@ -22,6 +22,10 @@ type
     procedure btnacessarClick(Sender: TObject);
   private
     { Private declarations }
+    id:integer;
+    nome:string;
+    usuario:string;
+    logado:boolean;
     jsnobj: TJSONObject; // jsonencode - PHP
     procedure geraJSON();
   public
@@ -48,15 +52,18 @@ procedure Tfrmacesso.geraJSON;
 begin
   try
     jsnobj := TJSONObject.Create;
+    jsnobj.AddPair('op','l');
     jsnobj.AddPair('usuario', edtusuario.Text);
     jsnobj.AddPair('senha', edtsenha.Text);
     { chamada da API }
-    dm.RESTRequest1.Resource := '/login.php?jsn={parametro}';
+    dm.RESTRequest1.Resource := '/usuarios/?jsn={parametro}';
     { jsnobj.ToString -> pega os dados e transforma em
       {"usuario":"valor","senha":"valor" }// }
-    ShowMessage(jsnobj.ToString);
-    // dm.RESTRequest1.Params.AddUrlSegment('parametro', jsnobj.ToString);
-    // dm.RESTRequest1.Execute;
+    //ShowMessage(jsnobj.ToString);
+     dm.RESTRequest1.Params.AddUrlSegment('parametro', jsnobj.ToString);
+     dm.RESTRequest1.Execute;
+     //carga do usuário logado
+      ShowMessage(IntToStr(dm.usuariosid.AsInteger));
   finally
     jsnobj.DisposeOf;
   end;

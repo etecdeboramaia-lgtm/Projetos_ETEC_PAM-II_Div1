@@ -13,9 +13,9 @@ uses
 
 begin
   Application.Initialize;
+  Application.CreateForm(Tfrmlistausuarios, frmlistausuarios);
   Application.CreateForm(Tfrmacesso, frmacesso);
   Application.CreateForm(Tfrmwebview, frmwebview);
-  Application.CreateForm(Tfrmlistausuarios, frmlistausuarios);
   Application.CreateForm(Tfrmiuusuario, frmiuusuario);
   Application.CreateForm(Tdm, dm);
   Application.Run;
