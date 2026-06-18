@@ -28,6 +28,7 @@ type
     logado:boolean;
     jsnobj: TJSONObject; // jsonencode - PHP
     procedure geraJSON();
+    procedure gravaUsuario();
   public
     { Public declarations }
   end;
@@ -39,7 +40,7 @@ implementation
 
 {$R *.fmx}
 
-uses umodulo;
+uses umodulo, umenu;
 
 { Tfrmacesso }
 
@@ -63,7 +64,15 @@ begin
      dm.RESTRequest1.Params.AddUrlSegment('parametro', jsnobj.ToString);
      dm.RESTRequest1.Execute;
      //carga do usuário logado
-      ShowMessage(IntToStr(dm.usuariosid.AsInteger) + '-' + dm.usuariosnome.AsString);
+    //  ShowMessage(IntToStr(dm.usuariosid.AsInteger) + '-' + dm.usuariosnome.AsString);
+    if(dm.usuariosid.AsInteger <> 0) then
+    begin
+      frmMenu.Show;
+    end
+    else
+    begin
+      ShowMessage('Usuário não encontrado');
+    end;
   finally
     jsnobj.DisposeOf;
   end;
